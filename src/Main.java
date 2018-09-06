@@ -1,4 +1,6 @@
 
+//Project by Nathan Bullock and Tommy Nguyen
+
 import java.util.Scanner;
 
 public class Main {
