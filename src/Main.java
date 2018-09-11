@@ -10,6 +10,7 @@ public class Main {
     public static boolean gameOn = true;
     public static int turns = 0;
     public static String player = "x";
+    public static int inc = 1;
 
 
     //SEPERATE AS MUCH CODE FROM MAIN TO KEEP IT CLEAN
@@ -26,7 +27,9 @@ public class Main {
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0;j < 3; j++) {
-                grid[i][j] = " ";
+
+                grid[i][j] = Integer.toString(inc);
+                inc++;
             }
         }
 
@@ -43,7 +46,7 @@ public class Main {
     private static void welcomeGame() {
         System.out.println();
         System.out.println("Welcome to Tic Tac Toe!");
-        System.out.println("Player one will be X and player two will b O");
+        System.out.println("Player one will be x and player two will be o, press enter to continue");
 
         do{
             beginGame();
@@ -59,17 +62,18 @@ public class Main {
 
     private static void beginGame() {
         //2 Player or Computer?
-        System.out.println("Player one choose a spot (top left,middle middle)");
+
         String input = scan.nextLine();
 
         if (turns % 2 == 0) {
-            player = "o";
-        } else {
             player = "x";
+        } else {
+            player = "o";
         }
+        System.out.println("Player " + player + " choose a spot (1-9)");
         selectSpot(input, player);
 
-        System.out.println(spot);
+        checkWin();
         separateGrid();
 
         //Check if someone won
@@ -81,48 +85,48 @@ public class Main {
 
         switch(in) {
             default:
-                return;
-            case "top left":
+                System.out.println("Invalid tile. Please choose a number 1-9");
+            case "1":
                 spot = grid[0][0];
                 grid[0][0] = player;
                 turns++;
                 break;
-            case "top middle":
+            case "2":
                 spot = grid[0][1];
                 grid[0][1] = player;
                 turns++;
                 break;
-            case "top right":
+            case "3":
                 spot = grid[0][2];
                 grid[0][2] = player;
                 turns++;
                 break;
-            case "middle left":
+            case "4":
                 spot = grid[1][0];
                 grid[1][0] = player;
                 turns++;
                 break;
-            case "middle middle":
+            case "5":
                 spot = grid[1][1];
                 grid[1][1] = player;
                 turns++;
                 break;
-            case "middle right":
+            case "6":
                 spot = grid[1][2];
                 grid[1][2] = player;
                 turns++;
                 break;
-            case "bottom left":
+            case "7":
                 spot = grid[2][0];
                 grid[2][0] = player;
                 turns++;
                 break;
-            case "bottom middle":
+            case "8":
                 spot = grid[2][1];
                 grid[2][1] = player;
                 turns++;
                 break;
-            case "bottom right":
+            case "9":
                 spot = grid[2][2];
                 grid[2][2] = player;
                 turns++;
@@ -131,7 +135,6 @@ public class Main {
     }
 
     private static void checkWin() {
-
 
         for(int i = 0; i < 2; i++) {
                 if(grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]){
