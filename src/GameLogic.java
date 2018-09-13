@@ -17,9 +17,9 @@ public class GameLogic {
         do{
             beginGame();
 
-            if(turns >= 6) {
-                checkWin();
-            }
+//            if(turns >= 6) {
+//                checkWin();
+//            }
         } while (gameOn);
 
         System.out.println("We have a winner");
@@ -104,19 +104,19 @@ public class GameLogic {
     private static void checkWin() {
 
         for(int i = 0; i < 2; i++) {
-            if(board.grid[i][0] == board.grid[i][1] && board.grid[i][1] == board.grid[i][2]){
-                //gameOn = false;
+            if(board.grid[i][0].equals( board.grid[i][1]) && board.grid[i][1].equals(board.grid[i][2])){
+                gameOn = false;
 
-            } else if (board.grid[0][i] == board.grid[1][i] && board.grid[2][i] == board.grid[2][i]) {
-                //gameOn = false;
+            } else if (board.grid[0][i].equals(board.grid[1][i]) && board.grid[2][i].equals(board.grid[2][i])) {
+                gameOn = false;
 
-            } else if (board.grid[0][0] == board.grid[1][1] && board.grid[0][0] == board.grid[2][2]) {
-                //gameOn = false;
+            } else if (board.grid[0][0].equals(board.grid[1][1]) && board.grid[0][0].equals(board.grid[2][2])) {
+                gameOn = false;
 
-            } else if (board.grid[0][2] == board.grid[1][1] && board.grid[0][2] == board.grid[2][0]) {
-                //gameOn = false;
+            } else if (board.grid[0][2].equals(board.grid[1][1]) && board.grid[0][2].equals(board.grid[2][0])) {
+                gameOn = false;
             } else {
-                //gameOn = true;
+                gameOn = true;
             }
         }
 
