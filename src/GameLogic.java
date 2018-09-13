@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class GameLogic {
 
     static Scanner scan = new Scanner(System.in);
-    public static String spot;
-    public static boolean gameOn = true;
-    public static int turns = 1;
-    public static String player = "x";
+    private static String spot;
+    private static boolean gameOn = true;
+    private static int turns = 1;
+    private static String player = "x";
     public static Board board;
 
     public static void welcomeGame() {
@@ -50,7 +50,6 @@ public class GameLogic {
 
 
     private static void selectSpot(String in, String player) {
-
         switch(in) {
             default:
                 System.out.println("Invalid tile. Please choose a number 1-9");
