@@ -94,9 +94,15 @@ public class GameLogic {
         if(board.grid[first][second].equals("x") || board.grid[first][second].equals("o")) {
             System.out.println("This tile is already taken, please choose another");
         } else {
-            board.grid[first][second] = player;
+            placePlayer(first, second, player);
             turns++;
         }
+
+    }
+
+    private static void placePlayer(int first, int second, String player) {
+
+        board.grid[first][second] = player;
 
     }
 
