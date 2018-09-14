@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class GameLogic {
 
     static Scanner scan = new Scanner(System.in);
-    private static String spot;
     private static boolean gameOn = true;
     private static int turns = 1;
     private static String player = "x";
@@ -36,7 +35,7 @@ public class GameLogic {
         System.out.println("Player " + player + " choose a spot (1-9)");
 
         //Check if someone won
-
+        checkWin();
     }
 
     private static void checkPlayer() {
@@ -54,57 +53,57 @@ public class GameLogic {
             default:
                 System.out.println("Invalid tile. Please choose a number 1-9");
             case "1":
-                spot = board.grid[0][0];
-                board.grid[0][0] = player;
-                turns++;
+                checkIfTileIsUsed(0,0,player);
+
                 break;
             case "2":
-                spot = board.grid[0][1];
-                board.grid[0][1] = player;
-                turns++;
+              checkIfTileIsUsed(0,1,player);
                 break;
             case "3":
-                spot = board.grid[0][2];
-                board.grid[0][2] = player;
-                turns++;
+                checkIfTileIsUsed(0,2,player);
+
                 break;
             case "4":
-                spot = board.grid[1][0];
-                board.grid[1][0] = player;
-                turns++;
+                checkIfTileIsUsed(1,0,player);
+
                 break;
             case "5":
-                spot = board.grid[1][1];
-                board.grid[1][1] = player;
-                turns++;
+                checkIfTileIsUsed(1 ,1,player);
+
                 break;
             case "6":
-                spot = board.grid[1][2];
-                board.grid[1][2] = player;
-                turns++;
+                checkIfTileIsUsed(1,2,player);
+
                 break;
             case "7":
-                spot = board.grid[2][0];
-                board.grid[2][0] = player;
-                turns++;
+                checkIfTileIsUsed(2,0,player);
+
                 break;
             case "8":
-                spot = board.grid[2][1];
-                board.grid[2][1] = player;
-                turns++;
+                checkIfTileIsUsed(2,1,player);
+
                 break;
             case "9":
-                spot = board.grid[2][2];
-                board.grid[2][2] = player;
-                turns++;
+                checkIfTileIsUsed(2,2,player);
                 break;
         }
+    }
+
+    private static void checkIfTileIsUsed(int first, int second, String player) {
+
+        if(board.grid[first][second].equals("x") || board.grid[first][second].equals("o")) {
+            System.out.println("This tile is already taken, please choose another");
+        } else {
+            board.grid[first][second] = player;
+            turns++;
+        }
+
     }
 
     private static void checkWin() {
 
         for(int i = 0; i < 2; i++) {
-            if(board.grid[i][0].equals( board.grid[i][1]) && board.grid[i][1].equals(board.grid[i][2])){
+            if(board.grid[i][0].equals(board.grid[i][1]) && board.grid[i][1].equals(board.grid[i][2])){
                 gameOn = false;
 
             } else if (board.grid[0][i].equals(board.grid[1][i]) && board.grid[2][i].equals(board.grid[2][i])) {
