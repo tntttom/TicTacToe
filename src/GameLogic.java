@@ -17,9 +17,6 @@ public class GameLogic {
         do{
             beginGame();
 
-//            if(turns >= 6) {
-//                checkWin();
-//            }
         } while (gameOn);
 
         System.out.println("We have a winner");
@@ -27,7 +24,7 @@ public class GameLogic {
     }
 
     private static void beginGame() {
-        //2 Player or Computer?
+        //2 Player game
         String input = scan.nextLine();
         selectSpot(input, player);
         checkPlayer();
@@ -48,7 +45,7 @@ public class GameLogic {
 
     }
 
-
+    // case logic for choosing a spot in the game
     private static void selectSpot(String in, String player) {
         switch(in) {
             default:
@@ -101,6 +98,7 @@ public class GameLogic {
         }
     }
 
+    //Uses for loop to check if there are 3 Os or Xs in a row
     private static void checkWin() {
 
         for(int i = 0; i < 2; i++) {
