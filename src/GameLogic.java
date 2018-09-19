@@ -4,33 +4,36 @@ public class GameLogic {
 
     static Scanner scan = new Scanner(System.in);
     private static String spot;
-    private static boolean gameOn = true;
+    public static boolean gameOn = true;
     private static int turns = 1;
     private static String player = "x";
     public static Board board;
+    public static boolean isPlaying = true;
 
     public static void welcomeGame() {
+     do{
+         board.buildLayout();
         Scanner keyboard = new Scanner(System.in);
         System.out.println();
         System.out.println("Welcome to Tic Tac Toe!");
         System.out.println("Player one will be x and player two will be o, Choose a number between 1-9");
 
-        do{
+        do {
             beginGame();
 
         } while (gameOn);
-        //TODO we need to add a clearGrid method to clear out the old grid when the game is finished.
+        //DONE
         System.out.println("We have a winner");
         System.out.println();
         System.out.println("Would you like to play again?");
         String in = keyboard.nextLine();
-        if(in.equalsIgnoreCase("yes")){
+        if (in.equalsIgnoreCase("yes")) {
             welcomeGame();
-        }
-        else{
+        } else {
             System.out.println("Goodbye!");
+            isPlaying = false;
         }
-
+    } while(isPlaying);
     }
 
     private static void beginGame() {
@@ -109,7 +112,7 @@ public class GameLogic {
     }
 
     //Uses for loop to check if there are 3 Os or Xs in a row
-    //TODO found bug where when top 3 cells are filled it does not find winner.
+    //DONE found bug where when top 3 cells are filled it does not find winner.
     private static void checkWin() {
 
         for(int i = 0; i < 2; i++) {

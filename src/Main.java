@@ -13,8 +13,9 @@ public class Main {
     //SEPERATE AS MUCH CODE FROM MAIN TO KEEP IT CLEAN
     public static void main(String args[]) {
 
-        game.board.buildLayout();
         game.welcomeGame();
+
+
 
     }
 
